@@ -1,11 +1,6 @@
 import { mkdir, readFile, writeFile } from "fs/promises";
 import { join } from "path";
-import {
-  DEFAULT_CASTR_PLAYER_URL,
-  DEFAULT_TWITCH_CHANNEL_URL,
-  SECOND_CASTR_PLAYER_URL,
-  SECOND_TWITCH_CHANNEL_URL,
-} from "@/lib/default-twitch";
+import { DEFAULT_CASTR_PLAYER_URL, SECOND_CASTR_PLAYER_URL } from "@/lib/default-twitch";
 import { newCameraId, newIngestKey } from "./id";
 import type { CameraInput, CameraRecord, PublicCamera, StreamType } from "./types/camera";
 
@@ -121,32 +116,8 @@ async function seedDemoCameras(): Promise<void> {
     createdAt: now,
     updatedAt: now,
   };
-  const c2: CameraRecord = {
-    id: newCameraId(),
-    name: "Twitch — felipe_maldonado2",
-    sourceUrl: DEFAULT_TWITCH_CHANNEL_URL,
-    isActive: true,
-    order: 2,
-    description: "Embed oficial Twitch.",
-    streamType: "iframe",
-    createdAt: now,
-    updatedAt: now,
-  };
-  const c3: CameraRecord = {
-    id: newCameraId(),
-    name: "Twitch — felipe_maldonado123",
-    sourceUrl: SECOND_TWITCH_CHANNEL_URL,
-    isActive: true,
-    order: 3,
-    description: "Segundo canal Twitch (visor).",
-    streamType: "iframe",
-    createdAt: now,
-    updatedAt: now,
-  };
   memory.cameras[c0.id] = c0;
   memory.cameras[c1.id] = c1;
-  memory.cameras[c2.id] = c2;
-  memory.cameras[c3.id] = c3;
   queuePersist();
   await flushPersist();
 }
@@ -194,9 +165,17 @@ export async function listCameras(): Promise<CameraRecord[]> {
   });
 }
 
+/** Visor público: solo embeds Castr (`player.castr.com`), sin Twitch ni relay RTMP. */
+export function isVisibleOnPublicViewer(c: CameraRecord): boolean {
+  if (!c.isActive) return false;
+  if (c.ingestKey) return false;
+  const url = (c.sourceUrl ?? "").trim().toLowerCase();
+  return url.includes("player.castr.com");
+}
+
 export async function listPublicCameras(): Promise<PublicCamera[]> {
   const all = await listCameras();
-  return all.filter((c) => c.isActive).map(toPublic);
+  return all.filter((c) => isVisibleOnPublicViewer(c)).map(toPublic);
 }
 
 export async function getCameraById(id: string): Promise<CameraRecord | undefined> {

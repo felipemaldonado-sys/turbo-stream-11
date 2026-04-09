@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { buildPlaybackPayload } from "@/lib/camera-playback";
-import { getCameraById } from "@/lib/cameras-store";
+import { getCameraById, isVisibleOnPublicViewer } from "@/lib/cameras-store";
 
 type Params = { params: Promise<{ id: string }> };
 
@@ -17,7 +17,7 @@ export const dynamic = "force-dynamic";
 export async function GET(request: Request, context: Params) {
   const { id } = await context.params;
   const c = await getCameraById(id);
-  if (!c || !c.isActive) {
+  if (!c || !isVisibleOnPublicViewer(c)) {
     return NextResponse.json({ error: "Cámara no disponible" }, { status: 404 });
   }
   const body = buildPlaybackPayload(c, request);

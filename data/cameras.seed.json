@@ -11,39 +11,6 @@
       "createdAt": "2026-04-01T03:44:12.428Z",
       "updatedAt": "2026-04-01T03:44:12.428Z"
     },
-    "4a16cbe4fd4f402a": {
-      "id": "4a16cbe4fd4f402a",
-      "name": "Twitch — felipe_maldonado2",
-      "sourceUrl": "https://www.twitch.tv/felipe_maldonado2",
-      "isActive": true,
-      "order": 2,
-      "description": "Canal Twitch por defecto (embed en visor y admin).",
-      "streamType": "iframe",
-      "createdAt": "2026-04-01T03:44:12.428Z",
-      "updatedAt": "2026-04-01T03:44:12.428Z"
-    },
-    "8f92507fdd0e9f55": {
-      "id": "8f92507fdd0e9f55",
-      "name": "Twitch — felipe_maldonado123",
-      "sourceUrl": "https://www.twitch.tv/felipe_maldonado123",
-      "isActive": true,
-      "order": 3,
-      "description": "Cam 3 — segundo canal Twitch.",
-      "streamType": "iframe",
-      "createdAt": "2026-04-01T22:47:49.683Z",
-      "updatedAt": "2026-04-01T03:44:12.428Z"
-    },
-    "02184acc448a139f": {
-      "id": "02184acc448a139f",
-      "name": "Ejemplo inactivo",
-      "sourceUrl": "https://example.com/stream.m3u8",
-      "isActive": false,
-      "order": 4,
-      "description": "No visible en el visor público.",
-      "streamType": "hls",
-      "createdAt": "2026-04-01T03:44:12.428Z",
-      "updatedAt": "2026-04-01T03:44:12.428Z"
-    },
     "b3e7d6a5c4f21980": {
       "id": "b3e7d6a5c4f21980",
       "name": "Castr — turbostream 2",
@@ -52,6 +19,17 @@
       "order": 1,
       "description": "Segunda transmisión principal (player Castr).",
       "streamType": "iframe",
+      "createdAt": "2026-04-01T03:44:12.428Z",
+      "updatedAt": "2026-04-01T03:44:12.428Z"
+    },
+    "02184acc448a139f": {
+      "id": "02184acc448a139f",
+      "name": "Ejemplo inactivo",
+      "sourceUrl": "https://example.com/stream.m3u8",
+      "isActive": false,
+      "order": 2,
+      "description": "No visible en el visor público.",
+      "streamType": "hls",
       "createdAt": "2026-04-01T03:44:12.428Z",
       "updatedAt": "2026-04-01T03:44:12.428Z"
     }

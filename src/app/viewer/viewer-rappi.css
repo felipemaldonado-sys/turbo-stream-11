@@ -1,4 +1,4 @@
-/* Formato visual alineado con index.html (Rappi Turbo Live) */
+/* Viewer Turbo Stream (marca + Rappi) */
 
 .viewer-rappi-root {
   --bg: #070707;
@@ -45,12 +45,24 @@
   gap: 14px;
 }
 
+.viewer-rappi-root .brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .viewer-rappi-root .brand-logo {
   width: 54px;
   height: 54px;
   object-fit: cover;
   border-radius: 18px;
   box-shadow: 0 12px 28px rgba(255, 90, 60, 0.28);
+}
+
+.viewer-rappi-root .brand-logo-turbo {
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 12px 28px rgba(17, 166, 61, 0.32);
 }
 
 .viewer-rappi-root .brand-copy {
@@ -124,18 +136,6 @@
   letter-spacing: 0.14em;
 }
 
-.viewer-rappi-root .timer-pill {
-  display: inline-block;
-  background: var(--green);
-  color: var(--white);
-  padding: 16px 28px;
-  border-radius: 999px;
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 24px;
-  box-shadow: 0 18px 30px rgba(17, 166, 61, 0.28);
-}
-
 .viewer-rappi-root .hero h1 {
   font-size: clamp(34px, 5vw, 62px);
   line-height: 0.98;
@@ -150,108 +150,6 @@
   font-size: 18px;
   line-height: 1.6;
   max-width: 720px;
-}
-
-.viewer-rappi-root .status-card {
-  position: relative;
-  background: var(--white);
-  color: #111;
-  border-radius: 28px;
-  padding: 22px;
-  box-shadow: var(--shadow);
-}
-
-.viewer-rappi-root .status-card-demo-pill {
-  position: absolute;
-  top: 18px;
-  right: 20px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 90, 60, 0.35);
-  color: var(--rappi);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  pointer-events: none;
-}
-
-@media (max-width: 600px) {
-  .viewer-rappi-root .status-card-demo-pill {
-    position: static;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-}
-
-.viewer-rappi-root .status-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-
-.viewer-rappi-root .status-header h2 {
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: -0.8px;
-}
-
-.viewer-rappi-root .status-badge {
-  background: #fff0ec;
-  color: var(--rappi);
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.viewer-rappi-root .progress-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.viewer-rappi-root .step-icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 999px;
-  background: #f1f3f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  flex: 0 0 auto;
-}
-
-.viewer-rappi-root .step-icon.active {
-  background: var(--green-soft);
-}
-
-.viewer-rappi-root .progress-track {
-  flex: 1;
-  height: 8px;
-  background: #e7e9ec;
-  border-radius: 999px;
-  overflow: hidden;
-  position: relative;
-}
-
-.viewer-rappi-root .progress-fill {
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, #0cb43f, #2be76f);
-  border-radius: 999px;
-  transition: width 0.35s ease;
-}
-
-.viewer-rappi-root .mini-track {
-  width: 90px;
-  height: 8px;
-  background: #e7e9ec;
-  border-radius: 999px;
-  flex: 0 0 auto;
 }
 
 .viewer-rappi-root .stream-section {
@@ -362,46 +260,6 @@
   z-index: 0;
 }
 
-.viewer-rappi-root .stream-overlay {
-  position: absolute;
-  z-index: 5;
-  pointer-events: none;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
-}
-
-.viewer-rappi-root .stream-overlay-tl {
-  top: 14px;
-  left: 14px;
-  max-width: 55%;
-}
-
-.viewer-rappi-root .stream-overlay-channel {
-  display: inline-block;
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.viewer-rappi-root .stream-overlay-tr {
-  top: 14px;
-  right: 14px;
-}
-
-.viewer-rappi-root .stream-overlay-en-vivo {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
-  background: #c62828;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-}
-
 @media (min-width: 901px) {
   .viewer-rappi-root .stream-frame,
   .viewer-rappi-root .stream-frame-inner {
@@ -450,156 +308,6 @@
   }
 }
 
-.viewer-rappi-root .products-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Solo sugeridos (sin carrusel de cámaras arriba) */
-.viewer-rappi-root .products-section > .suggested-wrap:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
-}
-
-.viewer-rappi-root .products-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.viewer-rappi-root .products-kicker {
-  margin: 0 0 6px;
-  color: var(--rappi-soft);
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-.viewer-rappi-root .products-header h3 {
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: -0.8px;
-}
-
-.viewer-rappi-root .products-badge {
-  background: rgba(255, 90, 60, 0.12);
-  color: #ff8d77;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.viewer-rappi-root .products-marquee {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
-
-.viewer-rappi-root .products-track {
-  display: flex;
-  gap: 18px;
-  width: max-content;
-  animation: viewerProductsScroll 28s linear infinite;
-}
-
-.viewer-rappi-root .products-marquee:hover .products-track {
-  animation-play-state: paused;
-}
-
-.viewer-rappi-root .product-card {
-  min-width: 280px;
-  max-width: 280px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 18px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-  text-align: left;
-  color: inherit;
-  font: inherit;
-  transition: box-shadow 0.2s, border-color 0.2s;
-}
-
-.viewer-rappi-root .product-card:hover {
-  border-color: rgba(255, 90, 60, 0.35);
-}
-
-.viewer-rappi-root .product-card.is-selected {
-  border-color: var(--rappi);
-  box-shadow: 0 0 0 2px rgba(255, 90, 60, 0.25);
-}
-
-.viewer-rappi-root .product-image {
-  width: 62px;
-  height: 62px;
-  border-radius: 18px;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 6px;
-  flex: 0 0 auto;
-}
-
-.viewer-rappi-root .product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.viewer-rappi-root .product-info {
-  flex: 1;
-  text-align: left;
-}
-
-.viewer-rappi-root .product-name {
-  margin: 0 0 6px;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.3px;
-}
-
-.viewer-rappi-root .product-desc {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.35;
-}
-
-.viewer-rappi-root .product-tag {
-  background: rgba(30, 215, 96, 0.12);
-  color: #6dff9f;
-  padding: 8px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  flex-shrink: 0;
-}
-
-@keyframes viewerProductsScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 .viewer-rappi-root .view-toggle {
   display: inline-flex;
   gap: 8px;
@@ -623,7 +331,7 @@
   color: #ffb3a6;
 }
 
-/* Pastillas Cam 1 / Cam 2 (referencia demo Twitch) */
+/* Pastillas Cam 1 / Cam 2 */
 .viewer-rappi-root .cam-pills {
   display: flex;
   flex-wrap: wrap;
@@ -677,97 +385,250 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
-/* Productos sugeridos (estilo gopuff / pop-ups suaves) */
-.viewer-rappi-root .suggested-wrap {
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+.viewer-rappi-root .stream-frame--grid-host .stream-frame-inner {
+  padding-bottom: 0;
 }
 
-.viewer-rappi-root .suggested-header {
+.viewer-rappi-root .stream-frame--nested {
+  margin: 0;
+}
+
+/* Área de video + sugerencias superpuestas */
+.viewer-rappi-root .stream-suggestions-anchor {
+  position: relative;
+  width: 100%;
+  min-height: inherit;
+}
+
+.viewer-rappi-root .stream-suggestions-anchor--grid {
+  padding-bottom: 8px;
+}
+
+.viewer-rappi-root .stream-suggestions-pad {
+  padding-bottom: 148px;
+}
+
+@media (min-width: 901px) {
+  .viewer-rappi-root .stream-suggestions-pad {
+    padding-bottom: 160px;
+  }
+}
+
+.viewer-rappi-root .suggestions-restore-fab {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 8;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 10, 12, 0.88);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.viewer-rappi-root .suggestions-restore-fab:hover {
+  background: rgba(30, 30, 34, 0.95);
+  border-color: rgba(255, 90, 60, 0.35);
+}
+
+.viewer-rappi-root .suggestions-restore-fab:focus-visible {
+  outline: 2px solid rgba(255, 90, 60, 0.6);
+  outline-offset: 2px;
+}
+
+/* Franja de sugerencias sobre el stream */
+.viewer-rappi-root .suggested-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  padding: 10px 0 12px;
+  background: linear-gradient(to top, rgba(5, 5, 8, 0.94) 0%, rgba(5, 5, 8, 0.72) 55%, transparent 100%);
+  pointer-events: auto;
+}
+
+.viewer-rappi-root .suggested-overlay--empty {
+  padding: 12px 16px 14px;
+}
+
+.viewer-rappi-root .suggested-overlay-empty-msg {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.viewer-rappi-root .suggested-overlay-header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 10px;
   flex-wrap: wrap;
+  padding: 0 14px 8px;
 }
 
 .viewer-rappi-root .suggested-kicker {
-  margin: 0 0 4px;
-  font-size: 11px;
+  margin: 0 0 2px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.38);
 }
 
-.viewer-rappi-root .suggested-title {
+.viewer-rappi-root .suggested-overlay-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: -0.4px;
-  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: -0.3px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.viewer-rappi-root .suggested-overlay-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .viewer-rappi-root .suggested-hint {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.35);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.32);
   font-weight: 500;
 }
 
-.viewer-rappi-root .suggested-scroll {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding: 6px 4px 14px;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 90, 60, 0.25) transparent;
+.viewer-rappi-root .suggested-hint-overlay {
+  display: none;
 }
 
-.viewer-rappi-root .suggested-scroll::-webkit-scrollbar {
-  height: 5px;
+@media (min-width: 640px) {
+  .viewer-rappi-root .suggested-hint-overlay {
+    display: inline;
+  }
 }
 
-.viewer-rappi-root .suggested-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+.viewer-rappi-root .suggested-strip-hide {
+  flex-shrink: 0;
+  padding: 7px 14px;
   border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.viewer-rappi-root .suggested-strip-hide:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.viewer-rappi-root .suggested-marquee-outer {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 24px,
+    black calc(100% - 24px),
+    transparent
+  );
+}
+
+.viewer-rappi-root .suggested-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 12px;
+  padding: 4px 14px 2px;
+  animation: viewerSuggestedMarquee 55s linear infinite;
+}
+
+.viewer-rappi-root .suggested-marquee-outer:hover .suggested-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewer-rappi-root .suggested-marquee-track {
+    animation: none;
+  }
+}
+
+@keyframes viewerSuggestedMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .viewer-rappi-root .suggested-pop {
   position: relative;
   flex: 0 0 auto;
-  width: 132px;
-  scroll-snap-align: start;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
+  width: 128px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.viewer-rappi-root .suggested-pop:hover {
+.viewer-rappi-root .suggested-pop--overlay:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 90, 60, 0.18);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  border-color: rgba(255, 90, 60, 0.25);
 }
 
 .viewer-rappi-root .suggested-pop-inner {
-  padding: 12px 10px 10px;
+  padding: 8px 8px 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   text-align: center;
 }
 
-.viewer-rappi-root .suggested-emoji {
-  font-size: 28px;
-  line-height: 1;
-  filter: saturate(0.95);
-  opacity: 0.95;
+.viewer-rappi-root .suggested-thumb {
+  width: 100%;
+  height: 72px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.viewer-rappi-root .suggested-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.viewer-rappi-root .suggested-thumb--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(255, 90, 60, 0.2), rgba(0, 0, 0, 0.45));
+}
+
+.viewer-rappi-root .suggested-thumb--fallback span {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .viewer-rappi-root .suggested-text {
@@ -775,11 +636,11 @@
 }
 
 .viewer-rappi-root .suggested-name {
-  margin: 0 0 4px;
-  font-size: 12px;
+  margin: 0 0 2px;
+  font-size: 11px;
   font-weight: 600;
   line-height: 1.25;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.88);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -788,41 +649,57 @@
 
 .viewer-rappi-root .suggested-price {
   margin: 0;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
-  color: rgba(255, 180, 160, 0.95);
+  color: rgba(255, 180, 160, 0.98);
   letter-spacing: -0.02em;
 }
 
 .viewer-rappi-root .suggested-sub {
   margin: 4px 0 0;
-  font-size: 10px;
+  font-size: 9px;
   color: rgba(255, 255, 255, 0.35);
   line-height: 1.2;
 }
 
-.viewer-rappi-root .suggested-chip {
-  display: block;
-  text-align: center;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
-  padding: 6px 8px 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+.viewer-rappi-root .suggested-add-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 7px 8px 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(17, 166, 61, 0.95), rgba(14, 130, 48, 0.98));
+  border-radius: 0 0 15px 15px;
+  transition: filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.viewer-rappi-root .suggested-add-link:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.viewer-rappi-root .suggested-add-link:focus-visible {
+  outline: 2px solid var(--green-soft);
+  outline-offset: 2px;
 }
 
 .viewer-rappi-root .suggested-dismiss {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 3px;
+  right: 3px;
+  z-index: 2;
   width: 22px;
   height: 22px;
   border: none;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.35);
-  color: rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   font-size: 14px;
   line-height: 1;
   cursor: pointer;
@@ -838,8 +715,8 @@
 }
 
 .viewer-rappi-root .suggested-dismiss:hover {
-  background: rgba(0, 0, 0, 0.5);
-  color: rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 0.65);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 @media (hover: none) {
@@ -849,9 +726,7 @@
 }
 
 @media (max-width: 900px) {
-  .viewer-rappi-root .status-header,
-  .viewer-rappi-root .stream-header,
-  .viewer-rappi-root .products-header {
+  .viewer-rappi-root .stream-header {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -873,51 +748,19 @@
     border-radius: 14px;
   }
 
-  .viewer-rappi-root .timer-pill {
+  .viewer-rappi-root .brand-logo-turbo {
+    border-radius: 50%;
+  }
+
+  .viewer-rappi-root .stream-header h3 {
     font-size: 22px;
-    padding: 14px 22px;
-  }
-
-  .viewer-rappi-root .status-card {
-    padding: 18px;
-    border-radius: 22px;
-  }
-
-  .viewer-rappi-root .status-header h2,
-  .viewer-rappi-root .stream-header h3,
-  .viewer-rappi-root .products-header h3 {
-    font-size: 22px;
-  }
-
-  .viewer-rappi-root .step-icon {
-    width: 52px;
-    height: 52px;
-    font-size: 22px;
-  }
-
-  .viewer-rappi-root .mini-track {
-    width: 46px;
-  }
-
-  .viewer-rappi-root .product-card {
-    min-width: 240px;
-    max-width: 240px;
-  }
-
-  .viewer-rappi-root .product-image {
-    width: 54px;
-    height: 54px;
-  }
-
-  .viewer-rappi-root .product-name {
-    font-size: 16px;
   }
 
   .viewer-rappi-root .suggested-pop {
-    width: 118px;
+    width: 112px;
   }
 
-  .viewer-rappi-root .suggested-title {
-    font-size: 16px;
+  .viewer-rappi-root .suggested-overlay-title {
+    font-size: 14px;
   }
 }

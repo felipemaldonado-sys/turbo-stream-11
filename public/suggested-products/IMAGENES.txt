@@ -1,0 +1,10 @@
+Las miniaturas del carrusel usan por defecto el CDN de Rappi (mismas fotos que en
+https://www.rappi.com.co/tiendas/900139851-turbo), definidas en:
+  src/data/suggested-products-co.ts
+
+Si quieres sustituir una foto por un archivo tuyo:
+  1) Guarda la imagen en esta carpeta, ej. mi-aguacate.jpg
+  2) En suggested-products-co.ts cambia solo el imageUrl de ese producto a:
+     /suggested-products/mi-aguacate.jpg
+
+Las rutas locales no pasan por el proxy; el resto sí (Rappi + Wikimedia de respaldo).
