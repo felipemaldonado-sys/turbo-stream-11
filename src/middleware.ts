@@ -1,54 +1,32 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { ADMIN_SESSION_COOKIE, getAdminSessionToken } from "@/lib/admin-auth";
 
-const ADMIN_BASIC_USER =
-  process.env.ADMIN_BASIC_USER && process.env.ADMIN_BASIC_USER.trim().length > 0
-    ? process.env.ADMIN_BASIC_USER.trim()
-    : "rappiturbostream";
-const ADMIN_BASIC_PASS =
-  process.env.ADMIN_BASIC_PASS && process.env.ADMIN_BASIC_PASS.trim().length > 0
-    ? process.env.ADMIN_BASIC_PASS.trim()
-    : "turbocastr.io";
-const BASIC_AUTH_REALM = "Turbo Stream Admin";
-
-function unauthorizedResponse() {
-  return new NextResponse("Authentication required", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": `Basic realm="${BASIC_AUTH_REALM}", charset="UTF-8"`,
-      "Cache-Control": "no-store",
-    },
-  });
+function isPublicAuthPath(pathname: string): boolean {
+  return pathname === "/admin/login" || pathname === "/api/admin/auth/login";
 }
 
-function parseBasicAuthHeader(header: string | null): { user: string; pass: string } | null {
-  if (!header || !header.startsWith("Basic ")) return null;
-  const base64 = header.slice(6).trim();
-  if (!base64) return null;
-
-  try {
-    const decoded = atob(base64);
-    const separator = decoded.indexOf(":");
-    if (separator < 0) return null;
-    return {
-      user: decoded.slice(0, separator),
-      pass: decoded.slice(separator + 1),
-    };
-  } catch {
-    return null;
-  }
-}
-
-function isAuthorized(request: NextRequest): boolean {
-  const parsed = parseBasicAuthHeader(request.headers.get("authorization"));
-  return Boolean(parsed && parsed.user === ADMIN_BASIC_USER && parsed.pass === ADMIN_BASIC_PASS);
+function isAuthenticated(request: NextRequest): boolean {
+  return request.cookies.get(ADMIN_SESSION_COOKIE)?.value === getAdminSessionToken();
 }
 
 export function middleware(request: NextRequest) {
-  if (isAuthorized(request)) {
+  const { pathname, search } = request.nextUrl;
+  if (isPublicAuthPath(pathname)) {
     return NextResponse.next();
   }
-  return unauthorizedResponse();
+
+  if (isAuthenticated(request)) {
+    return NextResponse.next();
+  }
+
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+  }
+
+  const loginUrl = new URL("/admin/login", request.url);
+  loginUrl.searchParams.set("next", `${pathname}${search}`);
+  return NextResponse.redirect(loginUrl);
 }
 
 export const config = {
@@ -58,7 +36,7 @@ export const config = {
     "/configure",
     "/configure/:path*",
     "/api/admin/:path*",
-    "/api/cameras",
     "/api/cameras/:path*",
+    "/api/cameras",
   ],
 };

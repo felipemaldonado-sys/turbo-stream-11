@@ -10,7 +10,13 @@ import { usePathname } from "next/navigation";
 /* eslint-disable @next/next/no-html-link-for-pages -- enlaces nativos = navegación completa sin depender del chunk JS */
 export function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const hideNav = pathname === "/viewer" || pathname?.startsWith("/viewer/");
+  const hideNav =
+    pathname === "/viewer" ||
+    pathname?.startsWith("/viewer/") ||
+    pathname === "/admin" ||
+    pathname?.startsWith("/admin/") ||
+    pathname === "/configure" ||
+    pathname?.startsWith("/configure/");
 
   return (
     <>
@@ -27,12 +33,6 @@ export function SiteChrome({ children }: { children: ReactNode }) {
             className="rounded-lg px-3 py-1.5 text-zinc-400 transition hover:bg-white/5 hover:text-zinc-100"
           >
             Visor
-          </a>
-          <a
-            href="/admin"
-            className="rounded-lg px-3 py-1.5 text-zinc-400 transition hover:bg-white/5 hover:text-zinc-100"
-          >
-            Admin
           </a>
           <span className="ml-auto text-[11px] text-zinc-600">
             Mismo puerto que la terminal (p. ej. <code className="text-zinc-500">:3333</code>)

@@ -303,19 +303,40 @@ export default function AdminPage() {
     await load();
   };
 
+  const logout = async () => {
+    try {
+      await fetch("/api/admin/auth/logout", { method: "POST" });
+    } finally {
+      window.location.href = "/admin/login";
+    }
+  };
+
   const editingCamera = editingId ? cameras.find((c) => c.id === editingId) : undefined;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#07080c] to-[#0c0f16]">
       <header className="border-b border-surface-border/80 bg-[#0a0c11]/95 px-4 py-4 backdrop-blur">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-amber-500/90">
-            Privado
-          </p>
-          <h1 className="text-xl font-semibold text-zinc-50">Administración de cámaras</h1>
-          <p className="mt-1 text-xs text-zinc-500">
-            Monitor en vivo al abrir admin; activa o desactiva cada cámara para el visor público cuando quieras.
-          </p>
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/turbo-logo.png" alt="Turbo" className="h-8 w-auto" />
+              <p className="mt-3 text-[10px] font-semibold uppercase tracking-widest text-amber-500/90">
+                Privado
+              </p>
+              <h1 className="text-xl font-semibold text-zinc-50">Administración de cámaras</h1>
+              <p className="mt-1 text-xs text-zinc-500">
+                Monitor en vivo al abrir admin; activa o desactiva cada cámara para el visor público cuando quieras.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => void logout()}
+              className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs font-semibold text-zinc-200 transition hover:bg-white/10"
+            >
+              Cerrar sesión
+            </button>
+          </div>
           {localBackupAt != null && (
             <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
               <span>
